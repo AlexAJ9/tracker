@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/AlexAJ9/typescript-node#readme",
   "devDependencies": {
+    "@types/node": "^13.9.1",
     "ts-node": "^8.6.2",
     "typescript": "^3.8.3"
   }

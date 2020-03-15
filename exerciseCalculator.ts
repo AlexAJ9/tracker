@@ -8,6 +8,16 @@ interface Result {
   average: number
 }
 
+type Data = Array<number>
+
+const parseData = (args: Array<string>): Data => {
+  if (args.length < 5) throw new Error('Not enough arguments')
+
+  if (args.slice(2).filter(x => isNaN(Number(x))).length > 0)
+    throw new Error(`Array must be an array of numbers `)
+  else return [...args.slice(2).map(x => Number(x))]
+}
+
 function calculateExercises(data: Array<number>): Result {
   const analyzedData: Result = {
     periodLength: data.length,
@@ -16,9 +26,15 @@ function calculateExercises(data: Array<number>): Result {
     rating: data.length === 0 ? 1 : data.length > 4 ? 3 : 2,
     ratingDescription:
       this.rating === 1 ? 'real bad' : this.rating > 2 ? 'average bad' : 'ok',
-    target: 22,
+    target: data[0],
     average: data.reduce((x, y) => x + y) / data.length,
   }
   return analyzedData
 }
-console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1]))
+
+try {
+  const data = parseData(process.argv)
+  console.log(calculateExercises(data))
+} catch (Err) {
+  console.log(Err.message)
+}
