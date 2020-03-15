@@ -2,7 +2,6 @@ interface Values {
   a: number
   b: number
 }
-
 const parseValues = (args: Array<string>): Values => {
   if (args.length < 4) throw new Error('Not enough arguments')
   if (args.length > 4) throw new Error('Too many arguments')
@@ -16,7 +15,7 @@ const parseValues = (args: Array<string>): Values => {
   }
 }
 
-function calculateBmi(height: number, weight: number): string {
+export default function calculateBmi(height: number, weight: number): string {
   if (height === 0 || weight === 0) {
     throw new Error('Invalid input')
   }
