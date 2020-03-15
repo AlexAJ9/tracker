@@ -1,0 +1,25 @@
+{
+  "name": "typescript-node",
+  "version": "1.0.0",
+  "description": "typescript node app",
+  "main": "index.js",
+  "scripts": {
+    "ts-node":"ts-node",
+    "calculateBmi":"ts-node bmiCalculator.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexAJ9/typescript-node.git"
+  },
+  "author": "alex",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexAJ9/typescript-node/issues"
+  },
+  "homepage": "https://github.com/AlexAJ9/typescript-node#readme",
+  "devDependencies": {
+    "ts-node": "^8.6.2",
+    "typescript": "^3.8.3"
+  }
+}
