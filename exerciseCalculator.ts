@@ -18,16 +18,19 @@ const parseData = (args: Array<string>): Data => {
   else return [...args.slice(2).map(x => Number(x))]
 }
 
-function calculateExercises(data: Array<number>): Result {
+export default function calculateExercises(
+  this: any,
+  data: Array<number>,
+): Result {
   const analyzedData: Result = {
-    periodLength: data.length,
-    trainingDays: data.filter(x => x > 0).length,
+    periodLength: data.length - 1,
+    trainingDays: data.filter(x => x > 0).length - 1,
     success: this.average > this.target ? true : false,
-    rating: data.length === 0 ? 1 : data.length > 4 ? 3 : 2,
+    rating: this.trainingDays === 0 ? 1 : this.trainingDays > 4 ? 3 : 2,
     ratingDescription:
-      this.rating === 1 ? 'real bad' : this.rating > 2 ? 'average bad' : 'ok',
+      this.rating === 1 ? 'real bad' : this.rating > 2 ? 'ok' : 'average bad',
     target: data[0],
-    average: data.reduce((x, y) => x + y) / data.length,
+    average: data.reduce((x, y) => x + y) / data.length - 1,
   }
   return analyzedData
 }
